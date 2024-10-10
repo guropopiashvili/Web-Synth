@@ -7,6 +7,9 @@
 <p>1. Clone the forked repository</p>
 <p>2. install packages</p>
 <p>3. Run `ng serve` for a dev server.</p>
+
+<p>Use your keyboard to play (Z-M for the lower octave, Q-P for the higher octave)</p>
+
 <h3 align="left">Connect with me:</h3>
 <p align="left">
 <a href="https://fb.com/guropopiashvili" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/facebook.svg" alt="guropopiashvili" height="30" width="40" /></a>

@@ -1,0 +1,39 @@
+.preset-selector-container {
+    width: auto;
+    height: 100%;
+    background: rgb(0 0 0 / 30%);
+    backdrop-filter: blur(20px);
+    margin-left: 30px;
+    border-radius: 10px;
+
+    h3.header {
+        margin: 0px 0px 40px 0px;
+        padding: 20px 20px 20px 60px;
+        color: #fff;
+        font-weight: lighter;
+    }
+
+    .preset {
+        padding: 10px 150px 10px 60px;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        color: #fff;
+        font-weight: lighter;
+        font-size: 13px;
+        background-image: url('../../../assets/icons/wave.svg');
+        background-repeat: no-repeat;
+        background-size: 15px auto;
+        background-position: left 20px center;
+        margin: 5px 0;
+
+        &:hover {
+            background-color: rgb(255 255 255 / 10%);
+        }
+
+        &.active {
+            border-left: 2px solid #fff;
+            background-color: rgb(0 0 0 / 20%);
+        }
+    }
+}

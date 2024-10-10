@@ -1,0 +1,19 @@
+<div class="filter-container">
+    <div class="header">
+        <h2>Filter <span>low pass</span></h2>
+    </div>
+
+    <div class="controls">
+        <app-knob class="knob" label="CUTOFF" [value]="cutoff" [min]="1"
+            (valueChange)="setFilterCutoff($event)"></app-knob>
+
+        <div class="knob-separator"></div>
+
+        <app-knob class="knob" label="ATTACK" [value]="attack" (valueChange)="setFilterAttack($event)"></app-knob>
+        <app-knob class="knob" label="DECAY" [value]="decay" [min]="1"
+            (valueChange)="setFilterDecay($event)"></app-knob>
+        <app-knob class="knob" label="SUSTAIN" [value]="sustain" [min]="1"
+            (valueChange)="setFilterSustain($event)"></app-knob>
+        <app-knob class="knob" label="RELEASE" [value]="release" (valueChange)="setFilterRelease($event)"></app-knob>
+    </div>
+</div>

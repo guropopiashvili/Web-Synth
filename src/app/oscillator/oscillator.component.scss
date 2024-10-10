@@ -1,0 +1,50 @@
+@use '../colors' as *;
+
+.osc {
+    background: $main-color;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    padding: 10px 20px;
+
+    &.disabled {
+        opacity: 0.7;
+    }
+
+    .header {
+        display: flex;
+        align-items: center;
+
+        h2 {
+            color: #ffebeb;
+            font-size: 15px;
+            margin: 0;
+
+            span {
+                font-size: 10px;
+                font-weight: 100;
+            }
+        }
+
+        .toggle {
+            margin-left: 20px;
+        }
+    }
+
+
+    .wrapper {
+        margin-top: 20px;
+
+        .knobs {
+            display: flex;
+            align-items: center;
+
+            .knob {
+                margin: 0 5px;
+            }
+
+            app-envelope-visualizer {
+                margin-left: 30px;
+            }
+        }
+    }
+}

@@ -1,0 +1,37 @@
+<div class="osc" [ngClass]="{'disabled': !params.isActive}">
+    <div class="header">
+        <h2>OSC-{{ id }} <span>Oscillator</span></h2>
+
+        <div class="toggle" [ngClass]="{'active': params.isActive, 'disabled': id === 0}"
+            (click)="toggleOscillator(id)"></div>
+    </div>
+
+    <div class="wrapper">
+        <div class="knobs">
+            <app-knob class="knob" label="WAVE" [type]="knobType.Oscillator" [value]="params.oscillatorType"
+                (valueChange)="setOscillatorType($event)"></app-knob>
+
+            <div class="knob-separator"></div>
+
+            <app-knob class="knob" label="ATTACK" [value]="params.attack" (valueChange)="setAttack($event)"></app-knob>
+            <app-knob class="knob" label="DECAY" [value]="params.decay" [min]="1"
+                (valueChange)="setDecay($event)"></app-knob>
+            <app-knob class="knob" label="SUSTAIN" [value]="params.sustain"
+                (valueChange)="setSustain($event)"></app-knob>
+            <app-knob class="knob" label="RELEASE" [value]="params.release" [min]="1"
+                (valueChange)="setRelease($event)"></app-knob>
+
+            <div class="knob-separator"></div>
+
+            <app-knob class="knob" label="TRANSPOSE" [type]="knobType.BiDirectional" [value]="params.coarse"
+                (valueChange)="setCoarse($event)"></app-knob>
+
+            <div class="knob-separator"></div>
+
+            <app-knob class="knob" label="LEVEL" [value]="params.volume" (valueChange)="setVolume($event)"></app-knob>
+
+
+            <app-envelope-visualizer [attack]="params.attack" [decay]="params.decay" [release]="params.release"
+                [sustain]="params.sustain" [volume]="params.volume"></app-envelope-visualizer>
+        </div>
+    </div>

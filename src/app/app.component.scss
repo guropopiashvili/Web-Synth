@@ -1,0 +1,33 @@
+@use './colors' as *;
+
+.lfo-filter {
+    display: flex;
+}
+
+.oscillators-container {
+    display: flex;
+
+    .oscillators {
+        display: flex;
+        flex-direction: column-reverse;
+        width: max-content;
+    }
+
+    app-master-controls {
+        width: -webkit-fill-available;
+        margin: 0 0 10px 10px;
+    }
+}
+
+app-lfo {
+    margin-left: 10px;
+}
+
+.keyboard-container {
+    display: flex;
+
+    app-oscillator-visualizer {
+        width: -webkit-fill-available;
+        margin-left: 10px;
+    }
+}

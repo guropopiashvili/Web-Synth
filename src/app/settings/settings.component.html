@@ -1,0 +1,11 @@
+<div class="settings-container" [ngClass]="{'open': menuIsOpen}" (clickOutside)="closeEverything()">
+    <div class="settings" (mouseenter)="menuIsOpen = true" (mouseleave)="onMenuMouseLeave()">
+        <div class="menu-item presets" [ngClass]="{'active': presetSelectorIsOpen}"
+            (click)="presetSelectorIsOpen = true">Presets</div>
+
+        <div class="menu-item theme">Theme</div>
+        <div class="menu-item help">Help</div>
+    </div>
+
+    <app-preset-selector *ngIf="presetSelectorIsOpen"></app-preset-selector>
+</div>

@@ -1,0 +1,28 @@
+<div class="keyboard" (mouseleave)="cancelMouseClickedNote()" (mouseup)="cancelMouseClickedNote()">
+    <h2>Synth <span>Esizer</span></h2>
+
+    <div class="left-controls">
+        <div class="octave-changer">
+            <div class="down transpose-button" (click)="transpose(octaveStart - 1)"><img
+                    src="../../assets/icons/transpose.svg"></div>
+            <div class="up transpose-button" (click)="transpose(octaveStart + 1)"><img src="../../assets/icons/transpose.svg">
+            </div>
+        </div>
+    </div>
+
+    <div class="wrapper">
+        <div class="top-controls">
+            <div class="octave-indicators">
+                <div class="toggle b-w" [ngClass]="{'active': octaveStart === i + 2}"
+                    *ngFor="let n of [].constructor(4); let i = index" (click)="transpose(i + 2)"></div>
+            </div>
+        </div>
+
+
+        <div class="key-wrapper">
+            <div class="key" [ngClass]="{'pressed': pressedKeys.includes(note)}" *ngFor="let note of keys"
+                (mousedown)="onMouseDown(note)" (mouseenter)="onMouseEnter(note)">
+            </div>
+        </div>
+    </div>
+</div>

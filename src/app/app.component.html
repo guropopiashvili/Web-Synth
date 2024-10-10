@@ -1,0 +1,26 @@
+<!-- <app-preset-selector></app-preset-selector> -->
+
+<div class="oscillators-container">
+  <div class="oscillators">
+    <app-oscillator *ngFor="let oscParams of pickedPreset.oscParams" [id]="oscParams.id"
+      [params]="oscParams"></app-oscillator>
+  </div>
+
+  <app-master-controls [masterParams]="pickedPreset.masterParams"></app-master-controls>
+</div>
+
+<div class="lfo-filter">
+  <app-filter [attack]="pickedPreset.filterParams.attack" [decay]="pickedPreset.filterParams.decay"
+    [sustain]="pickedPreset.filterParams.sustain" [release]="pickedPreset.filterParams.release"
+    [cutoff]="pickedPreset.filterParams.cutoff"></app-filter>
+
+  <app-lfo [lfoMode]="pickedPreset.lfoParams.mode" [lfoRate]="pickedPreset.lfoParams.rate"
+    [lfoAmplitude]="pickedPreset.lfoParams.amplitude"></app-lfo>
+</div>
+
+<div class="keyboard-container">
+  <app-keyboard></app-keyboard>
+  <app-oscillator-visualizer [ac]="analyser"></app-oscillator-visualizer>
+</div>
+
+<app-settings></app-settings>

@@ -1,0 +1,12 @@
+<div class="wrapper">
+    <div class="knob-container">
+        <canvas #canvas></canvas>
+
+        <div class=" knob" (mousedown)="onMouseDown($event)"
+            [ngStyle]="{'transform': 'rotate(' + knobRotation() + 'deg)'}">
+            <div class="indicator"></div>
+        </div>
+    </div>
+
+    <h4>{{ label }}</h4>
+</div>

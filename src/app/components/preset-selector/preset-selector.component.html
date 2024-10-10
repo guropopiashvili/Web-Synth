@@ -1,0 +1,9 @@
+<div class="preset-selector-container" *ngIf="$pickedOption | async as pickedOption">
+    <h3 class=" header"> Presets</h3>
+
+    @for (preset of options; track $index) {
+    <div class="preset" [ngClass]="{'active': pickedOption === preset}" (click)="pickPreset(preset)">
+        {{preset.name}}
+    </div>
+    }
+</div>

@@ -1,0 +1,11 @@
+<div class="master-controls-container">
+    <h2>Master <span>Params</span></h2>
+
+    <app-knob class="knob" label="VOLUME" [value]="masterParams.masterVolume"
+        (valueChange)="setMasterVolume($event)"></app-knob>
+
+    <app-knob class="knob" label="PAN" [type]="knobType.BiDirectional" [value]="masterParams.pan"
+        (valueChange)="setPan($event)"></app-knob>
+
+    <app-knob class="knob" label="CHORUS" [value]="masterParams.chorus" (valueChange)="setChorus($event)"></app-knob>
+</div>

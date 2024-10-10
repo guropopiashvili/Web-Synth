@@ -1,0 +1,35 @@
+<div class="lfo-container">
+    <div class="header">
+        <h2>LFO <span>scillator</span></h2>
+    </div>
+
+    <div class="controls">
+        <app-knob class="knob" label="WAVE" [type]="knobType.Oscillator" [value]="0"
+            (valueChange)="setLfoOscillatorType($event)"></app-knob>
+
+        <div class="mode">
+            <h4>MODE</h4>
+
+            <div class="mode-options">
+                <div class="option" (click)="setLfoMode(0)">
+                    <span>Volume</span>
+                    <div class="toggle" [ngClass]="{'active': lfoMode === 0}"></div>
+                </div>
+                <div class="option" (click)="setLfoMode(1)">
+                    <span>Pitch</span>
+                    <div class="toggle" [ngClass]="{'active': lfoMode === 1}"></div>
+                </div>
+                <!-- <div class="option" (click)="setLfoMode(2)">
+                    <span>Filter</span>
+                    <div class="toggle" [ngClass]="{'active': lfoMode === 2}"></div>
+                </div> -->
+            </div>
+        </div>
+
+        <app-knob class="knob" label="RATE" [type]="knobType.OneDirectional" [value]="0"
+            (valueChange)="setLfoRate($event)"></app-knob>
+
+        <app-knob class="knob" label="AMPLITUDE" [type]="knobType.OneDirectional" [value]="0"
+            (valueChange)="setLfoAmplitude($event)"></app-knob>
+    </div>
+</div>

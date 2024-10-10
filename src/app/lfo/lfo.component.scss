@@ -1,0 +1,66 @@
+@use '../colors' as *;
+
+.lfo-container {
+    background: $main-color;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    padding: 10px 20px;
+
+    .header {
+        display: flex;
+        align-items: center;
+
+        h2 {
+            color: #ffebeb;
+            font-size: 15px;
+            margin: 0;
+
+            span {
+                font-size: 10px;
+                font-weight: 100;
+            }
+        }
+    }
+
+    .controls {
+        display: flex;
+        align-items: center;
+        margin-top: 20px;
+
+        .knob {
+            margin: 0 5px;
+        }
+
+        .mode {
+            display: flex;
+            justify-content: center;
+            color: #fff;
+            margin: 0 30px;
+
+            h4 {
+                font-size: 14px;
+                margin: auto 0;
+            }
+
+            .mode-options {
+                display: flex;
+                flex-direction: column;
+                margin-left: 15px;
+
+                .option {
+                    position: relative;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    cursor: pointer;
+
+                    span {
+                        font-size: 10px;
+                        font-weight: lighter;
+                        margin-right: 10px;
+                    }
+                }
+            }
+        }
+    }
+}

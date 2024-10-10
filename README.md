@@ -1,4 +1,4 @@
-<h1 align="center">Web Sythesizer</h1>
+<h1 align="center">Web Sythesizer - <a href="https://web-synthesizer.onrender.com"/>App Demo</a></h1>
 <h2>Description</h2>
 <p>This is a Synthesizer app build with Angular and Web Audio Api. It allows users to design sounds with 3 oscillators, filters and effects. It also has a built in Visualizer for the sound waves.</p>
 <h2>Contributing</h2>

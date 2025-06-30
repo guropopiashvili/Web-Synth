@@ -1,4 +1,6 @@
-import { AfterViewInit, Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
+import { AudioService } from '../services/audio.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-oscillator-visualizer',
@@ -7,21 +9,18 @@ import { AfterViewInit, Component, ElementRef, Input, ViewChild } from '@angular
   templateUrl: './oscillator-visualizer.component.html',
   styleUrl: './oscillator-visualizer.component.scss'
 })
-export class OscillatorVisualizerComponent implements AfterViewInit {
-  @Input() set ac(value: any) {
-    if (value) {
-      this.analyser = value;
-      this.dataArray = new Uint8Array(this.analyser.frequencyBinCount);
-      this.draw();
-    }
-  }
+export class OscillatorVisualizerComponent implements AfterViewInit, OnDestroy {
   @ViewChild('canvas') canvasEl!: ElementRef<HTMLCanvasElement>;
   canvas!: HTMLCanvasElement;
   ctx!: CanvasRenderingContext2D;
   analyser!: AnalyserNode;
   dataArray!: Uint8Array;
+  subscription!: Subscription;
+
+  constructor(private audioService: AudioService) {}
 
   draw = () => {
+    if (!this.analyser) return;
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
     this.analyser.getByteTimeDomainData(this.dataArray);
     let segmentWidth = this.canvas.width / this.analyser.frequencyBinCount;
@@ -41,6 +40,17 @@ export class OscillatorVisualizerComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     this.setInitialCanvasParameters();
+    this.subscription = this.audioService.analyser$.subscribe(analyser => {
+      if (analyser) {
+        this.analyser = analyser;
+        this.dataArray = new Uint8Array(this.analyser.frequencyBinCount);
+        this.draw();
+      }
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
   setInitialCanvasParameters() {

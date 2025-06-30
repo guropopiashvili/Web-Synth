@@ -41,7 +41,10 @@ export class AudioService {
   }
 
   subscribeToCurrentPreset() {
-    this.appService.pickedPreset.subscribe((preset) => this.pickedPreset = preset);
+    this.appService.pickedPreset.subscribe((preset) => {
+      this.pickedPreset = preset;
+      this.updateMasterParamValuesRealTime();
+    });
   }
 
   subscribeToNoteEvents() {

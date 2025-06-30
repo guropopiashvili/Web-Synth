@@ -12,6 +12,7 @@ import { OscillatorVisualizerComponent } from './oscillator-visualizer/oscillato
 import { SettingsComponent } from './settings/settings.component';
 import { AudioService } from './services/audio.service';
 import { Preset } from './app-types';
+import { MidiService } from './services/midi.service';
 
 @Component({
   selector: 'app-root',
@@ -23,7 +24,8 @@ import { Preset } from './app-types';
 export class AppComponent {
   pickedPreset!: Preset;
 
-  constructor(private audioService: AudioService) {
+  constructor(private audioService: AudioService, private midiService: MidiService) {
     this.audioService.appService.pickedPreset.subscribe((preset) => this.pickedPreset = preset);
+    this.midiService.initializeMidi();
   }
 }

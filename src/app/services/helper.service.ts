@@ -8,13 +8,34 @@ export class HelperService {
   notesArray: NotesEnum[];
 
   constructor() {
-    this.notesArray = Object.keys(NotesEnum).filter((v) => isNaN(Number(v))) as unknown as NotesEnum[];
+    this.notesArray = Object.values(NotesEnum).filter((v) => typeof v === 'number') as NotesEnum[];
+  }
+
+  midiToNoteEnum(midiNote: number): NotesEnum | undefined {
+    const noteName = this.midiToNoteName(midiNote);
+    const noteKey = Object.keys(NotesEnum).find(key => key === noteName);
+    if (noteKey) {
+      return NotesEnum[noteKey as keyof typeof NotesEnum];
+    }
+    return undefined;
+  }
+
+  midiToNoteName(midiNote: number): string {
+    const noteNames = ['C', 'C#', 'D', 'Eb', 'E', 'F', 'F#', 'G', 'Ab', 'A', 'Bb', 'B'];
+    const octave = Math.floor(midiNote / 12) - 1;
+    const noteIndex = midiNote % 12;
+    return noteNames[noteIndex] + octave;
   }
 
   findFrequencyValue(note: NotesEnum, corase: number) {
     const noteI = this.notesArray.indexOf(note);
 
-    return +FrequencyEnum[this.notesArray[noteI + corase]]
+    const targetNoteNumericValue = this.notesArray[noteI + corase];
+
+    const targetNoteName = NotesEnum[targetNoteNumericValue] as keyof typeof FrequencyEnum;
+
+    const frequency = FrequencyEnum[targetNoteName];
+    return frequency;
   }
 
   canPlayFromKeyboard(keyCode: string): boolean {

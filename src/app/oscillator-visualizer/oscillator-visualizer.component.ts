@@ -16,6 +16,7 @@ export class OscillatorVisualizerComponent implements AfterViewInit, OnDestroy {
   analyser!: AnalyserNode;
   dataArray!: Uint8Array;
   subscription!: Subscription;
+  private drawingStarted = false;
 
   constructor(private audioService: AudioService) {}
 
@@ -41,9 +42,10 @@ export class OscillatorVisualizerComponent implements AfterViewInit, OnDestroy {
   ngAfterViewInit(): void {
     this.setInitialCanvasParameters();
     this.subscription = this.audioService.analyser$.subscribe(analyser => {
-      if (analyser) {
+      if (analyser && !this.drawingStarted) {
         this.analyser = analyser;
         this.dataArray = new Uint8Array(this.analyser.frequencyBinCount);
+        this.drawingStarted = true;
         this.draw();
       }
     });

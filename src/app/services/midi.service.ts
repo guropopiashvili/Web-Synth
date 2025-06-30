@@ -24,7 +24,7 @@ export class MidiService {
     }
   }
 
-  private onMIDIMessage(event: WebMidi.MIDIMessageEvent) {
+  private onMIDIMessage(event: any) {
     const command = event.data[0];
 
     // Process Note On (0x90-0x9F) and Note Off (0x80-0x8F) messages
